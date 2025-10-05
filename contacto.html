@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto — Romi Deco</title>
+  <meta name="description" content="Objetos & luces que transforman tu espacio">
+  <link href="styles.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav>
+  <div class="container navbar">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="Romi Deco logo">
+    </a>
+    <div class="navlinks">
+      <a class="" href="index.html">Inicio</a>
+      <a class="" href="nosotros.html">Nosotros</a>
+      <a class="" href="productos.html">Productos</a>
+      <a class="active" href="contacto.html">Contacto</a>
+    </div>
+  </div>
+</nav>
+<main class="container">
+
+<section class="section">
+  <h2>Ubicación & Contacto</h2>
+  <div class="grid">
+    <div class="card" style="flex: 2 1 360px;">
+      <p><strong>Dirección:</strong> Galería Norte, Local 12 · Av. Central 1234</p>
+      <p><strong>Tel:</strong> +54 11 4567-8901<br>
+      <strong>Mail:</strong> <a href="mailto:hola@romideco.example">hola@romideco.example</a></p>
+      <p><strong>Redes:</strong> <a href="https://instagram.com/romideco">Instagram</a> · <a href="https://facebook.com/romideco">Facebook</a></p>
+      <p><em>Estamos dentro de la galería, planta baja, frente al patio central.</em></p>
+    </div>
+    <aside class="card map-embed" style="flex:1 1 320px;">
+      <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13130.954091427915!2d-58.383759!3d-34.603738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a3352b23b1b6c9%3A0x0!2sGaler%C3%ADa%20Centro!5e0!3m2!1ses-419!2sar!4v1700000000000">
+      </iframe>
+    </aside>
+  </div>
+</section>
+<section class="section">
+  <h2>Escribinos</h2>
+  <form class="card" method="post" action="#" onsubmit="alert('¡Mensaje enviado! (demo)'); return false;">
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <input required style="flex:1 1 220px; padding:12px; border-radius:12px; border:1px solid #ddd;" type="text" name="nombre" placeholder="Tu nombre">
+      <input required style="flex:1 1 220px; padding:12px; border-radius:12px; border:1px solid #ddd;" type="email" name="email" placeholder="Tu email">
+    </div>
+    <textarea required style="width:100%; margin-top:12px; min-height:120px; padding:12px; border-radius:12px; border:1px solid #ddd;" name="mensaje" placeholder="¿En qué podemos ayudarte?"></textarea>
+    <button class="btn primary" type="submit">Enviar</button>
+  </form>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="container cols">
+    <div class="col">
+      <h3 style="margin-top:0">Romi Deco</h3>
+      <p>Objetos & luces que transforman tu espacio</p>
+    </div>
+    <div class="col">
+      <strong>Contacto</strong>
+      <p>Galería Norte, Local 12 · Av. Central 1234<br>
+      +54 11 4567-8901<br>
+      <a href="mailto:hola@romideco.example">hola@romideco.example</a></p>
+    </div>
+    <div class="col">
+      <strong>Redes</strong>
+      <p><a href="https://instagram.com/romideco">Instagram</a> · <a href="https://facebook.com/romideco">Facebook</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
