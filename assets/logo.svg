@@ -1,0 +1,7 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='320' height='90' viewBox='0 0 320 90'>
+<rect width='320' height='90' rx='14' fill='#F5F5F2'/>
+<g transform='translate(12,18)'>
+<circle cx='24' cy='24' r='24' fill='#1F3A5F'/><circle cx='24' cy='24' r='12' fill='#D1B280'/>
+<text x='64' y='28' font-family='Poppins, sans-serif' font-size='28' fill='#1F3A5F' font-weight='700'>Romi</text>
+<text x='64' y='54' font-family='Inter, sans-serif' font-size='22' fill='#333'>Deco</text>
+</g></svg>
