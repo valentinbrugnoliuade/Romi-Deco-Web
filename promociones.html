@@ -1,0 +1,43 @@
+<!doctype html><html lang='es'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Promociones — Romi Deco</title><meta name='description' content='Objetos & luces que transforman tu espacio'>
+<link href='styles.css' rel='stylesheet'>
+<link rel='preconnect' href='https://fonts.googleapis.com'><link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap' rel='stylesheet'></head><body>
+<header><div class='container navbar'><a class='brand' href='index.html'><img src='assets/logo.svg' alt='Romi Deco logo'></a>
+<nav aria-label='Principal'><div class='navlinks' role='menubar'>
+<a class= href='index.html' role='menuitem'>Inicio</a>
+<a class= href='nosotros.html' role='menuitem'>Nosotros</a>
+<a class= href='productos.html' role='menuitem'>Productos</a>
+<a class=active href='promociones.html' role='menuitem'>Promociones</a>
+<a class= href='contacto.html' role='menuitem'>Contacto</a>
+<a class= href='sitemap.html' role='menuitem'>Mapa del sitio</a>
+</div></nav></div></header><main class='container'><section class='section'>
+<h2>Promociones Vigentes</h2>
+<p>Seleccioná un producto y cantidad para conocer tu ahorro. Los precios son de referencia para la simulación.</p>
+<div class='grid'>
+  <article class='card promo-card'>
+    <h3>Llevá 2 y obtené 50% en el segundo</h3>
+    <div class='row'><select id='pA_producto'></select><input id='pA_cantidad' class='input' type='number' min='1' value='2' placeholder='Cantidad'></div>
+    <button class='btn primary' id='pA_btn'>Calcular</button>
+    <div class='results' id='pA_res'></div>
+  </article>
+  <article class='card promo-card'>
+    <h3>3x2 en productos seleccionados</h3>
+    <div class='row'><select id='pB_producto'></select><input id='pB_cantidad' class='input' type='number' min='1' value='3' placeholder='Cantidad'></div>
+    <button class='btn primary' id='pB_btn'>Calcular</button>
+    <div class='results' id='pB_res'></div>
+  </article>
+  <article class='card promo-card'>
+    <h3>10% de descuento por compras superiores a $30.000</h3>
+    <div class='row'><select id='pC_producto'></select><input id='pC_cantidad' class='input' type='number' min='1' value='1' placeholder='Cantidad'></div>
+    <button class='btn primary' id='pC_btn'>Calcular</button>
+    <div class='results' id='pC_res'></div>
+  </article>
+</div>
+</section>
+<script src='promociones.js'></script></main><footer><div class='container inner'><div class='footer-cols'>
+<section class='footer-col'><h3 style='margin-top:0'>Romi Deco</h3><p>Objetos & luces que transforman tu espacio</p></section>
+<section class='footer-col'><strong>Contacto</strong><p>Dirección: Galería Norte, Local 12 · Av. Central 1234<br>Teléfono: +54 11 4567-8901<br>Email: <a href='mailto:hola@romideco.example'>hola@romideco.example</a><br>Horarios: Lun a Sáb 10–20 h · Dom 12–18 h</p></section>
+<section class='footer-col'><strong>Redes</strong><p><a href='https://instagram.com/romideco'>Instagram</a> · <a href='https://facebook.com/romideco'>Facebook</a></p></section>
+</div></div></footer></body></html>
