@@ -29,63 +29,84 @@
   <main class="container">
     <section class="section">
       <h2>Promociones vigentes</h2>
-      <p>
+      <p class="muted">
         Seleccioná un producto y una cantidad para simular el precio con nuestras promociones.
         Los precios son de referencia para la actividad.
       </p>
 
       <div class="grid">
         <!-- Promo 1 -->
-        <article class="card promo-card">
-          <h3>Promo 1 — 50% en la segunda unidad</h3>
-          <p>
-            Llevando de a pares, la segunda unidad del mismo producto tiene 50% de descuento.
-          </p>
-          <div class="row">
-            <label for="p1_producto" class="visually-hidden">Producto</label>
-            <select id="p1_producto"></select>
+        <article class="card promo-card" aria-labelledby="promo1_title">
+          <h3 id="promo1_title">Promo 1 — 50% en la segunda unidad</h3>
+          <p class="muted">Por cada par, la segunda unidad del mismo producto tiene 50% de descuento.</p>
+
+          <div class="row form-row" role="group" aria-describedby="p1_help">
+            <label for="p1_producto" class="visually-hidden">Producto (promo 1)</label>
+            <select id="p1_producto" aria-label="Producto para promo 1"></select>
 
             <label for="p1_cantidad" class="visually-hidden">Cantidad</label>
-            <input id="p1_cantidad" class="input" type="number" min="1" value="2" placeholder="Cantidad">
+            <input id="p1_cantidad" class="input" type="number" inputmode="numeric" min="1" step="1" value="2" placeholder="Cantidad" aria-label="Cantidad para promo 1">
           </div>
-          <button class="btn primary" id="p1_btn">Calcular</button>
-          <div class="results" id="p1_res"></div>
+
+          <div class="row actions-row">
+            <button class="btn primary" id="p1_btn" type="button">Calcular</button>
+            <button class="btn" id="p1_clear" type="button" aria-label="Limpiar resultados promo 1">Limpiar</button>
+          </div>
+
+          <div class="results" id="p1_res" role="status" aria-live="polite" aria-atomic="true">
+            <em id="p1_help">Ingrese producto y cantidad, luego presione "Calcular".</em>
+          </div>
         </article>
 
         <!-- Promo 2 -->
-        <article class="card promo-card">
-          <h3>Promo 2 — 3x2</h3>
-          <p>
-            Cada 3 unidades del mismo producto, pagás solo 2 (la tercera queda bonificada).
-          </p>
-          <div class="row">
-            <label for="p2_producto" class="visually-hidden">Producto</label>
-            <select id="p2_producto"></select>
+        <article class="card promo-card" aria-labelledby="promo2_title">
+          <h3 id="promo2_title">Promo 2 — 3x2</h3>
+          <p class="muted">Por cada 3 unidades del mismo producto, pagás solo 2.</p>
+
+          <div class="row form-row" role="group" aria-describedby="p2_help">
+            <label for="p2_producto" class="visually-hidden">Producto (promo 2)</label>
+            <select id="p2_producto" aria-label="Producto para promo 2"></select>
 
             <label for="p2_cantidad" class="visually-hidden">Cantidad</label>
-            <input id="p2_cantidad" class="input" type="number" min="1" value="3" placeholder="Cantidad">
+            <input id="p2_cantidad" class="input" type="number" inputmode="numeric" min="1" step="1" value="3" placeholder="Cantidad" aria-label="Cantidad para promo 2">
           </div>
-          <button class="btn primary" id="p2_btn">Calcular</button>
-          <div class="results" id="p2_res"></div>
+
+          <div class="row actions-row">
+            <button class="btn primary" id="p2_btn" type="button">Calcular</button>
+            <button class="btn" id="p2_clear" type="button" aria-label="Limpiar resultados promo 2">Limpiar</button>
+          </div>
+
+          <div class="results" id="p2_res" role="status" aria-live="polite" aria-atomic="true">
+            <em id="p2_help">Ingrese producto y cantidad, luego presione "Calcular".</em>
+          </div>
         </article>
 
         <!-- Promo 3 -->
-        <article class="card promo-card">
-          <h3>Promo 3 — 10% en compras mayores a $30.000</h3>
-          <p>
-            Si el total sin descuento supera los $30.000, se aplica un 10% de descuento
-            sobre el subtotal.
-          </p>
-          <div class="row">
-            <label for="p3_producto" class="visually-hidden">Producto</label>
-            <select id="p3_producto"></select>
+        <article class="card promo-card" aria-labelledby="promo3_title">
+          <h3 id="promo3_title">Promo 3 — 10% en compras mayores a $30.000</h3>
+          <p class="muted">Si el subtotal supera $30.000, se aplica un 10% sobre el total sin descuento.</p>
+
+          <div class="row form-row" role="group" aria-describedby="p3_help">
+            <label for="p3_producto" class="visually-hidden">Producto (promo 3)</label>
+            <select id="p3_producto" aria-label="Producto para promo 3"></select>
 
             <label for="p3_cantidad" class="visually-hidden">Cantidad</label>
-            <input id="p3_cantidad" class="input" type="number" min="1" value="1" placeholder="Cantidad">
+            <input id="p3_cantidad" class="input" type="number" inputmode="numeric" min="1" step="1" value="1" placeholder="Cantidad" aria-label="Cantidad para promo 3">
           </div>
-          <button class="btn primary" id="p3_btn">Calcular</button>
-          <div class="results" id="p3_res"></div>
+
+          <div class="row actions-row">
+            <button class="btn primary" id="p3_btn" type="button">Calcular</button>
+            <button class="btn" id="p3_clear" type="button" aria-label="Limpiar resultados promo 3">Limpiar</button>
+          </div>
+
+          <div class="results" id="p3_res" role="status" aria-live="polite" aria-atomic="true">
+            <em id="p3_help">Ingrese producto y cantidad, luego presione "Calcular".</em>
+          </div>
         </article>
+      </div>
+
+      <div class="note muted small" style="margin-top:1rem;">
+        Nota: los cálculos son ilustrativos. Para resultados oficiales consultá en tienda.
       </div>
     </section>
   </main>
@@ -117,7 +138,19 @@
     </div>
   </footer>
 
-  <!-- JS externo obligatorio -->
   <script src="promociones.js"></script>
+  <script>
+    // Comportamiento pequeño para los botones "Limpiar" (compatible con promociones.js)
+    document.addEventListener('click', (e) => {
+      if (!e.target.id) return;
+      if (e.target.id === 'p1_clear') {
+        document.getElementById('p1_res').innerHTML = '<em>Ingrese producto y cantidad, luego presione "Calcular".</em>';
+      } else if (e.target.id === 'p2_clear') {
+        document.getElementById('p2_res').innerHTML = '<em>Ingrese producto y cantidad, luego presione "Calcular".</em>';
+      } else if (e.target.id === 'p3_clear') {
+        document.getElementById('p3_res').innerHTML = '<em>Ingrese producto y cantidad, luego presione "Calcular".</em>';
+      }
+    });
+  </script>
 </body>
 </html>

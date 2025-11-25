@@ -56,21 +56,44 @@
 
     <section class="section">
       <h2>Algunos ejemplos</h2>
-      <div class="grid">
-        <article class="card product">
-          <h3>Lámpara Nova</h3>
-          <p class="price">$59.990</p>
-          <p>Base metálica, pantalla textil y luz cálida regulable.</p>
+      <div class="grid products-grid" aria-live="polite">
+        <article class="card product" aria-labelledby="p-nova">
+          <img src="assets/nova.jpg" alt="Lámpara Nova" class="product-image" width="400" height="300" onerror="this.style.opacity=.6">
+          <div class="product-body">
+            <h3 id="p-nova">Lámpara Nova</h3>
+            <p class="price" data-price="59990" aria-label="Precio: cincuenta y nueve mil novecientos noventa pesos">$59.990</p>
+            <p>Base metálica, pantalla textil y luz cálida regulable. Ideal para mesitas y rincones de lectura.</p>
+            <div class="product-actions">
+              <a class="btn btn-ghost" href="producto-nova.html" aria-label="Ver detalles de Lámpara Nova">Ver producto</a>
+              <button class="btn" type="button" aria-label="Agregar Lámpara Nova al carrito">Agregar</button>
+            </div>
+          </div>
         </article>
-        <article class="card product">
-          <h3>Sillón Orbit</h3>
-          <p class="price">$249.990</p>
-          <p>Sillón amplio con apoyabrazos, tapizado en tela neutra.</p>
+
+        <article class="card product" aria-labelledby="p-orbit">
+          <img src="assets/orbit.jpg" alt="Sillón Orbit" class="product-image" width="400" height="300" onerror="this.style.opacity=.6">
+          <div class="product-body">
+            <h3 id="p-orbit">Sillón Orbit</h3>
+            <p class="price" data-price="249990" aria-label="Precio: doscientos cuarenta y nueve mil novecientos noventa pesos">$249.990</p>
+            <p>Sillón amplio con apoyabrazos y tapizado en tela neutra. Confort para living y lectura.</p>
+            <div class="product-actions">
+              <a class="btn btn-ghost" href="producto-orbit.html" aria-label="Ver detalles de Sillón Orbit">Ver producto</a>
+              <button class="btn" type="button" aria-label="Agregar Sillón Orbit al carrito">Agregar</button>
+            </div>
+          </div>
         </article>
-        <article class="card product">
-          <h3>Set de vasos Aura (x6)</h3>
-          <p class="price">$14.990</p>
-          <p>Vidrio templado transparente, aptos para uso diario.</p>
+
+        <article class="card product" aria-labelledby="p-aura">
+          <img src="assets/aura.jpg" alt="Set de vasos Aura (x6)" class="product-image" width="400" height="300" onerror="this.style.opacity=.6">
+          <div class="product-body">
+            <h3 id="p-aura">Set de vasos Aura (x6)</h3>
+            <p class="price" data-price="14990" aria-label="Precio: catorce mil novecientos noventa pesos">$14.990</p>
+            <p>Vidrio templado transparente, aptos para uso diario. Pack de 6 unidades.</p>
+            <div class="product-actions">
+              <a class="btn btn-ghost" href="producto-aura.html" aria-label="Ver detalles del Set de vasos Aura">Ver producto</a>
+              <button class="btn" type="button" aria-label="Agregar Set de vasos Aura al carrito">Agregar</button>
+            </div>
+          </div>
         </article>
       </div>
     </section>
@@ -102,5 +125,16 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Formatea los precios visibles según la localización; si ya viniera formateado se mantiene.
+    (function formatPrices() {
+      document.querySelectorAll('.price[data-price]').forEach(el => {
+        const n = Number(el.dataset.price);
+        if (!Number.isFinite(n)) return;
+        el.textContent = n.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+      });
+    })();
+  </script>
 </body>
 </html>
