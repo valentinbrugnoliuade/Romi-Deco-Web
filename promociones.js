@@ -1,4 +1,3 @@
-// Lista de productos de ejemplo
 const productos = [
   { id: "nova", nombre: "Lámpara Nova", precio: 59990 },
   { id: "orbit", nombre: "Sillón Orbit", precio: 249990 },
@@ -38,7 +37,7 @@ function validarCantidad(valor) {
   return n;
 }
 
-function mostrarResultado(elemento, subtotal, descuento, total) {
+function mostrarResultado(elemento, precioUnit, cantidad, subtotal, descuento, total, detalle) {
   if (subtotal <= 0) {
     elemento.textContent = "No hay datos para calcular.";
     return;
@@ -46,44 +45,60 @@ function mostrarResultado(elemento, subtotal, descuento, total) {
   const ahorroPorcentaje = subtotal > 0 ? (descuento / subtotal) * 100 : 0;
 
   elemento.innerHTML = `
+    <p>Cantidad: <strong>${cantidad}</strong></p>
+    <p>Precio unitario: <strong>${formatearMoneda(precioUnit)}</strong></p>
+    <hr>
     <p>Total sin descuento: <span class="strike">${formatearMoneda(subtotal)}</span></p>
     <p>Descuento aplicado: <strong>${formatearMoneda(descuento)}</strong></p>
     <p>Total a pagar: <strong>${formatearMoneda(total)}</strong></p>
     <p>Ahorro: <strong>${ahorroPorcentaje.toFixed(1)}%</strong></p>
+    ${detalle ? `<hr><p><em>Detalle:</em> ${detalle}</p>` : ""}
   `;
 }
 
-// LÓGICA DE CADA PROMO
-// Promo 1: 50% en la segunda unidad (por cada par)
 function promo1(precio, cantidad) {
   const pares = Math.floor(cantidad / 2);
-  const descuento = pares * precio * 0.5;
+  const unidadesConDescuento = pares; // en cada par 1 unidad al 50%
+  const descuento = unidadesConDescuento * precio * 0.5;
   const subtotal = precio * cantidad;
   const total = subtotal - descuento;
-  return { subtotal, descuento, total };
+
+  const detalle = pares > 0
+    ? `Se aplican ${pares} par(es). ${unidadesConDescuento} unidad(es) al 50% de descuento.`
+    : "No hay pares suficientes para aplicar descuento.";
+
+  return { subtotal, descuento, total, detalle };
 }
 
-// Promo 2: 3x2
 function promo2(precio, cantidad) {
   const trios = Math.floor(cantidad / 3);
-  const descuento = trios * precio;
+  const unidadesGratis = trios; // por cada 3, 1 gratis
+  const descuento = unidadesGratis * precio;
   const subtotal = precio * cantidad;
   const total = subtotal - descuento;
-  return { subtotal, descuento, total };
+
+  const detalle = trios > 0
+    ? `Se aplican ${trios} promoción(es) 3x2. ${unidadesGratis} unidad(es) gratis.`
+    : "No alcanza para 3x2.";
+
+  return { subtotal, descuento, total, detalle };
 }
 
-// Promo 3: 10% si subtotal > 30000
-function promo3(precio, cantidad) {
+function promo3(precio, cantidad, umbral = 30000, porcentaje = 0.10) {
   const subtotal = precio * cantidad;
-  const descuento = subtotal > 30000 ? subtotal * 0.1 : 0;
+  const aplica = subtotal > umbral;
+  const descuento = aplica ? subtotal * porcentaje : 0;
   const total = subtotal - descuento;
-  return { subtotal, descuento, total };
+
+  const detalle = aplica
+    ? `Se aplica ${Math.round(porcentaje * 100)}% porque el subtotal supera ${formatearMoneda(umbral)}.`
+    : `No aplica ${Math.round(porcentaje * 100)}%. El subtotal debe superar ${formatearMoneda(umbral)}.`;
+
+  return { subtotal, descuento, total, detalle };
 }
 
-// Inicializar selects
 ["p1_producto", "p2_producto", "p3_producto"].forEach(cargarSelect);
 
-// Listeners
 $("p1_btn").addEventListener("click", () => {
   const productoId = $("p1_producto").value;
   const cantidad = validarCantidad($("p1_cantidad").value);
@@ -95,8 +110,13 @@ $("p1_btn").addEventListener("click", () => {
   }
 
   const precio = obtenerPrecioPorId(productoId);
-  const { subtotal, descuento, total } = promo1(precio, cantidad);
-  mostrarResultado(salida, subtotal, descuento, total);
+  if (!precio) {
+    salida.textContent = "Producto no encontrado.";
+    return;
+  }
+
+  const { subtotal, descuento, total, detalle } = promo1(precio, cantidad);
+  mostrarResultado(salida, precio, cantidad, subtotal, descuento, total, detalle);
 });
 
 $("p2_btn").addEventListener("click", () => {
@@ -110,8 +130,13 @@ $("p2_btn").addEventListener("click", () => {
   }
 
   const precio = obtenerPrecioPorId(productoId);
-  const { subtotal, descuento, total } = promo2(precio, cantidad);
-  mostrarResultado(salida, subtotal, descuento, total);
+  if (!precio) {
+    salida.textContent = "Producto no encontrado.";
+    return;
+  }
+
+  const { subtotal, descuento, total, detalle } = promo2(precio, cantidad);
+  mostrarResultado(salida, precio, cantidad, subtotal, descuento, total, detalle);
 });
 
 $("p3_btn").addEventListener("click", () => {
@@ -125,6 +150,11 @@ $("p3_btn").addEventListener("click", () => {
   }
 
   const precio = obtenerPrecioPorId(productoId);
-  const { subtotal, descuento, total } = promo3(precio, cantidad);
-  mostrarResultado(salida, subtotal, descuento, total);
+  if (!precio) {
+    salida.textContent = "Producto no encontrado.";
+    return;
+  }
+
+  const { subtotal, descuento, total, detalle } = promo3(precio, cantidad, 30000, 0.10);
+  mostrarResultado(salida, precio, cantidad, subtotal, descuento, total, detalle);
 });
